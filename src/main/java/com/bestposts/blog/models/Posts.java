@@ -13,11 +13,19 @@ public class Posts {
     private Integer id;
 
     private String label;
-    private String text;
+    private String postText;
     private Integer authorId;
 
     public Integer getId() {
         return id;
+    }
+
+    public Posts() {
+    }
+
+    public Posts(String label, String postText) {
+        this.label = label;
+        this.postText = postText;
     }
 
     public void setId(Integer id) {
@@ -32,12 +40,12 @@ public class Posts {
         this.label = label;
     }
 
-    public String getText() {
-        return text;
+    public String getPostText() {
+        return postText;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setPostText(String postText) {
+        this.postText = postText;
     }
 
     public Integer getAuthorId() {

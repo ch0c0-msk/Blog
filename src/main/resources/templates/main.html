@@ -19,7 +19,7 @@
                     <ul class="nav nav-fill">
                         <li class="nav-item"><a class="nav-link" href="#">Все статьи</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Мои статьи</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Добавить</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../add">Добавить</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Мой профиль</a></li>
                         <li class="nav-item"><button type="button" class="btn btn-outline-primary"><a>Выйти</a></button></li>
                     </ul>
@@ -32,7 +32,7 @@
             <div class="col-10">
                 <div class="container-fluid" th:each="el : ${posts}">
                     <h4 th:text="${el.label}"/>
-                    <p th:text="${el.text}"/>
+                    <p th:text="${el.postText}"/>
                     <a>Author_Name</a>
                 </div>
             </div>

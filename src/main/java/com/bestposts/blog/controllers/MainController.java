@@ -6,6 +6,9 @@ package com.bestposts.blog.controllers;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.web.bind.annotation.GetMapping;
+        import org.springframework.web.bind.annotation.PostMapping;
+        import org.springframework.web.bind.annotation.RequestParam;
+
 @Controller
 public class MainController {
 
@@ -16,8 +19,21 @@ public class MainController {
     public String main(Model model) {
 
         Iterable<Posts> posts = postsRepo.findAll();
-        model.addAttribute("posts",posts);
+        model.addAttribute("posts", posts);
         return "main";
     }
 
+    @GetMapping("/add")
+    public String showAddPage(Model model) {
+
+        return "addPost";
+    }
+
+    @PostMapping("/add")
+    public String addPost(@RequestParam String label, @RequestParam String postText, Model model) {
+
+        Posts post = new Posts(label, postText);
+        postsRepo.save(post);
+        return "redirect:/main";
+    }
 }
