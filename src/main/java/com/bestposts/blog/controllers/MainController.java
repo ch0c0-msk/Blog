@@ -68,6 +68,13 @@ public class MainController {
         return "redirect:/main";
     }
 
+    @PostMapping("/main/{id}/remove")
+    public String removePost(@PathVariable(value = "id") Integer id, Model model) {
+        Posts post = postsRepo.findById(id).orElseThrow();
+        postsRepo.delete(post);
+        return "redirect:/main";
+    }
+
     @GetMapping("/login")
     public String login() {
 

@@ -35,8 +35,16 @@
                 <p>Виталий Самойлов</p>
                 <p th:text="${el.postText}"/>
                 <div class="mt-4">
-                    <a th:href="'/main/'+ ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
-                    <a th:href="'/main/'+ ${el.id} + '/delete'" class="btn btn-danger">Удалить</a>
+                    <div class="row">
+                        <div class="col-2">
+                            <a th:href="'/main/'+ ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+                        </div>
+                        <div class="col-2">
+                            <form th:action="'/main/' + ${el.id} + '/remove'" method="post">
+                                <button class="btn btn-danger" type="submit">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
