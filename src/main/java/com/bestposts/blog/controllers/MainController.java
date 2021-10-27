@@ -49,6 +49,25 @@ public class MainController {
         model.addAttribute("post",res);
         return "post-details";
     }
+
+    @GetMapping("/main/{id}/edit")
+    public String editPost(@PathVariable(value = "id") Integer id, Model model) {
+        Optional<Posts> post = postsRepo.findById(id);
+        ArrayList<Posts> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("post",res);
+        return "editPost";
+    }
+
+    @PostMapping("/main/{id}/edit")
+    public String updatePost(@PathVariable(value = "id") Integer id, @RequestParam String label, @RequestParam String postText, Model model) {
+        Posts post = postsRepo.findById(id).orElseThrow();
+        post.setLabel(label);
+        post.setPostText(postText);
+        postsRepo.save(post);
+        return "redirect:/main";
+    }
+
     @GetMapping("/login")
     public String login() {
 

@@ -2,4 +2,13 @@
     font-size: 1.2em;
 }
 
+p {
+    white-space: nowrap;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 
