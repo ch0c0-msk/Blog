@@ -33,7 +33,8 @@
                 <div class="container-fluid" th:each="el : ${posts}">
                     <h4 th:text="${el.label}"/>
                     <p th:text="${el.postText}"/>
-                    <a>Author_Name</a>
+                    <a>Виталий Самойлов</a>
+                    <a th:href="'/main/' + ${el.id}">Читать полностью</a>
                 </div>
             </div>
             <div class="col"></div>
