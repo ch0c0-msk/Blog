@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
@@ -18,7 +18,7 @@
             </div>
             <div class="container-fluid justify-content-end">
                 <ul class="nav nav-fill">
-                    <li class="nav-item"><button type="button" class="btn btn-outline-primary"><a>Зарегистрироваться</a></button></li>
+                    <li class="nav-item"><button type="button" class="btn btn-outline-primary"><a class="nav-link" href="/signup">Зарегистрироваться</a></button></li>
                 </ul>
             </div>
         </nav>
@@ -27,9 +27,9 @@
         <div class="container" id="formContent">
             <div id="formHeader"></div>
             <form>
-                <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
+                <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Пароль">
+                <input type="submit" class="fadeIn fourth" value="Войти">
             </form>
             <div id="formFooter"></div>
         </div>

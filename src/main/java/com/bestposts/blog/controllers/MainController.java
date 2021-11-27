@@ -75,9 +75,4 @@ public class MainController {
         return "redirect:/main";
     }
 
-    @GetMapping("/login")
-    public String login() {
-
-        return "login";
-    }
 }
