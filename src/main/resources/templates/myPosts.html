@@ -36,7 +36,7 @@
         <div class="col-10">
             <div id="short-post" class="container-fluid mt-5 bg-light text-dark border border-light rounded" th:each="el : ${posts}">
                 <p><h4 th:text="${el.label}"/></p>
-                <p class="font-italic" th:text="${el.authorId}"></p>
+                <p class="font-italic" th:text="${el.author}"></p>
                 <p th:text="${el.postText}"/>
                 <a th:href="'/main/' + ${el.id}">Читать полностью</a>
             </div>

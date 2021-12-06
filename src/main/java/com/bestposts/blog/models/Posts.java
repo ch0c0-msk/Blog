@@ -14,6 +14,8 @@ public class Posts {
 
     private String label;
     private String postText;
+    private String author;
+
     private Integer authorId;
 
     public Integer getId() {
@@ -23,7 +25,8 @@ public class Posts {
     public Posts() {
     }
 
-    public Posts(String label, String postText, Integer authorId) {
+    public Posts(String label, String postText, Integer authorId, String author) {
+        this.author = author;
         this.authorId = authorId;
         this.label = label;
         this.postText = postText;
@@ -55,5 +58,13 @@ public class Posts {
 
     public void setAuthorId(Integer authorId) {
         this.authorId = authorId;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

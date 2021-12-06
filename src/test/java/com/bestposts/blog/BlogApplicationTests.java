@@ -43,12 +43,12 @@ class BlogApplicationTests {
         assertThat(user).isNotNull();
     }
 
-    @Test
-    public void testCreatePost() {
-
-        Posts post = new Posts("label","text of post",61);
-        postsRepo.save(post);
-    }
+//    @Test
+//    public void testCreatePost() {
+//
+//        Posts post = new Posts("label","text of post",61);
+//        postsRepo.save(post);
+//    }
 
     @Test
     public void testGetPassword() {

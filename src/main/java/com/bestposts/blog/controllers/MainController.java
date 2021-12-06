@@ -44,7 +44,8 @@ public class MainController {
 
         Users user = (Users) userDetailsService.loadUserByUsername(principal.getName());
         Integer currentUserId = user.getId();
-        Posts post = new Posts(label, postText, currentUserId);
+        String author = user.getFirstName() + ' ' + user.getLastName();
+        Posts post = new Posts(label, postText, currentUserId, author);
         postsRepo.save(post);
         return "redirect:/main";
     }
