@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Main</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/signIn.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
@@ -28,13 +28,14 @@
         <div id="formHeader"></div>
         <form method="post" >
             <input type="text" id="email" class="form-control fadeIn first" name="email" placeholder="Email"\
-                   >
+                   required pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"
+                   title="Неправильно указан формат электронной почты">
             <input type="text" id="firstName" class="form-control fadeIn second" name="firstName" placeholder="Имя"
-                   >
+                   autofocus required>
             <input type="text" id="lastName" class="form-control fadeIn third" name="lastName" placeholder="Фамилия"
-                   >
+                   autofocus required>
             <input type="password" id="password" class="form-control fadeIn fourth" name="password" placeholder="Пароль"
-                   >
+                   autofocus required>
             <input type="submit" class="fadeIn fourth" value="Зарегистрироваться">
         </form>
         <div id="formFooter"></div>

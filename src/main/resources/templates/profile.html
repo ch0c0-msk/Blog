@@ -17,7 +17,7 @@
         </div>
         <div class="container-fluid justify-content-end">
             <ul class="nav nav-fill">
-                <li class="nav-item"><a class="nav-link" href="../main">Все статьи</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Все статьи</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Мои статьи</a></li>
                 <li class="nav-item"><a class="nav-link" href="../add">Добавить</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Мой профиль</a></li>
@@ -34,26 +34,21 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-10">
-            <div class="container-fluid" th:each="el : ${post}">
+            <div id="short-post" class="container-fluid mt-5 bg-light text-dark border border-light rounded" th:each="el : ${posts}">
                 <p><h4 th:text="${el.label}"/></p>
-                <p>Виталий Самойлов</p>
+                <p class="font-italic">Виталий Самойлов</p>
                 <p th:text="${el.postText}"/>
-                <div class="mt-4">
-                    <div class="row">
-                        <div class="col-2">
-                            <a th:href="'/main/'+ ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
-                        </div>
-                        <div class="col-2">
-                            <form th:action="'/main/' + ${el.id} + '/remove'" method="post">
-                                <button class="btn btn-danger" type="submit">Удалить</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <a th:href="'/main/' + ${el.id}">Читать полностью</a>
             </div>
         </div>
         <div class="col"></div>
     </div>
 </div>
 </body>
+<footer class="bg-light text-center text-lg-start mt-5">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-dark" href="https://github.com/ch0c0-msk/Blog">GitHub</a>
+    </div>
+</footer>
 </html>

@@ -21,7 +21,11 @@
                 <li class="nav-item"><a class="nav-link" href="#">Мои статьи</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Добавить</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Мой профиль</a></li>
-                <li class="nav-item"><button type="button" class="btn btn-outline-primary"><a>Выйти</a></button></li>
+                <li class="nav-item">
+                    <form action="/logout" method="post">
+                        <button type="submit" class="btn btn-outline-primary"><a>Выйти</a></button>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>
