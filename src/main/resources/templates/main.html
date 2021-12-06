@@ -18,10 +18,14 @@
                 <div class="container-fluid justify-content-end">
                     <ul class="nav nav-fill">
                         <li class="nav-item"><a class="nav-link" href="#">Все статьи</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Мои статьи</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/my-posts">Мои статьи</a></li>
                         <li class="nav-item"><a class="nav-link" href="../add">Добавить</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Мой профиль</a></li>
-                        <li class="nav-item"><button type="button" class="btn btn-outline-primary"><a>Выйти</a></button></li>
+                        <li class="nav-item">
+                            <form action="/logout" method="post">
+                                <button type="submit" class="btn btn-outline-primary"><a>Выйти</a></button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -32,7 +36,7 @@
             <div class="col-10">
                 <div id="short-post" class="container-fluid mt-5 bg-light text-dark border border-light rounded" th:each="el : ${posts}">
                     <p><h4 th:text="${el.label}"/></p>
-                    <p class="font-italic">Виталий Самойлов</p>
+                    <p class="font-italic" th:text="${el.authorId}"></p>
                     <p th:text="${el.postText}"/>
                     <a th:href="'/main/' + ${el.id}">Читать полностью</a>
                 </div>

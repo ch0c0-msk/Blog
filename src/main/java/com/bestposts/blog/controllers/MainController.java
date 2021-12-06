@@ -1,6 +1,8 @@
 package com.bestposts.blog.controllers;
 
+        import com.bestposts.blog.models.CustomUserDetailsService;
         import com.bestposts.blog.models.Posts;
+        import com.bestposts.blog.models.Users;
         import com.bestposts.blog.repos.PostsRepo;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ package com.bestposts.blog.controllers;
         import org.springframework.web.bind.annotation.PostMapping;
         import org.springframework.web.bind.annotation.RequestParam;
 
+        import java.security.Principal;
         import java.util.ArrayList;
         import java.util.Optional;
 
@@ -18,6 +21,9 @@ public class MainController {
 
     @Autowired
     private PostsRepo postsRepo;
+
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
 
     @GetMapping("/main")
     public String main(Model model) {
@@ -34,9 +40,11 @@ public class MainController {
     }
 
     @PostMapping("/add")
-    public String addPost(@RequestParam String label, @RequestParam String postText, Model model) {
+    public String addPost(@RequestParam String label, @RequestParam String postText, Model model,Principal principal) {
 
-        Posts post = new Posts(label, postText);
+        Users user = (Users) userDetailsService.loadUserByUsername(principal.getName());
+        Integer currentUserId = user.getId();
+        Posts post = new Posts(label, postText, currentUserId);
         postsRepo.save(post);
         return "redirect:/main";
     }
@@ -73,6 +81,20 @@ public class MainController {
         Posts post = postsRepo.findById(id).orElseThrow();
         postsRepo.delete(post);
         return "redirect:/main";
+    }
+
+    @GetMapping("/my-posts")
+    public String myPosts(Principal principal, Model model) {
+        if (principal.getName() != null) {
+            Users user = (Users) userDetailsService.loadUserByUsername(principal.getName());
+            Integer currentUserId = user.getId();
+            Iterable<Posts> posts = postsRepo.findAllByAuthor(currentUserId);
+            model.addAttribute("posts", posts);
+            return "myPosts";
+        }
+        else {
+            return "signIn";
+        }
     }
 
 }

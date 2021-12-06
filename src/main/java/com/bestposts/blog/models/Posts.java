@@ -23,7 +23,8 @@ public class Posts {
     public Posts() {
     }
 
-    public Posts(String label, String postText) {
+    public Posts(String label, String postText, Integer authorId) {
+        this.authorId = authorId;
         this.label = label;
         this.postText = postText;
     }
