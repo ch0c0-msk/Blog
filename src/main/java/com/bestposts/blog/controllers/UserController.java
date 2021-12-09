@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,5 +38,14 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(password));
         usersRepo.save(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("/profile/{id}")
+    public String showProfile(@PathVariable(value = "id") Integer id, Model model)
+    {
+
+        Users user = usersRepo.findById(id).orElseThrow();
+        model.addAttribute("user",user);
+        return "profile";
     }
 }

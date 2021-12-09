@@ -29,10 +29,14 @@ public class MainController {
     private CustomUserDetailsService userDetailsService;
 
     @GetMapping("/main")
-    public String main(Model model) {
-
+    public String main(Model model, Principal principal) {
+        Integer curUsrId = null;
+        if (principal != null) {
+            curUsrId = ((Users) userDetailsService.loadUserByUsername(principal.getName())).getId();
+        }
         Iterable<Posts> posts = postsRepo.findAll();
         model.addAttribute("posts", posts);
+        model.addAttribute("curUsrId",curUsrId);
         return "main";
     }
 

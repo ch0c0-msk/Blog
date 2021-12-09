@@ -1,0 +1,33 @@
+#profile {
+
+    margin-top: 100px;
+    margin-bottom: 16.5%;
+}
+
+.about {
+
+    margin-top: 20px;
+}
+
+
+.bg-black {
+    background: lightgray;
+}
+
+.skill-block {
+    margin-top: 20px;
+    width: 30%
+}
+
+@media (min-width: 991px) and (max-width:1200px) {
+    .skill-block {
+        padding: 32px !important
+    }
+}
+
+@media (min-width: 1200px) {
+    .skill-block {
+        padding: 56px !important
+    }
+}
+
