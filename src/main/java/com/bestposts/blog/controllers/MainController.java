@@ -41,8 +41,10 @@ public class MainController {
     }
 
     @GetMapping("/add")
-    public String showAddPage(Model model) {
+    public String showAddPage(Model model, Principal principal) {
 
+        Integer curUsrId = ((Users) userDetailsService.loadUserByUsername(principal.getName())).getId();
+        model.addAttribute("curUsrId",curUsrId);
         return "addPost";
     }
 
@@ -75,6 +77,7 @@ public class MainController {
         model.addAttribute("authorId",authorId);
         model.addAttribute("currId", currId);
         model.addAttribute("post",res);
+        model.addAttribute("curUsrId",currId);
         return "post-details";
     }
 
@@ -94,6 +97,7 @@ public class MainController {
             return "editPost";
         }
 
+        model.addAttribute("curUsrId",currId);
         return "redirect:/main";
     }
 
@@ -139,6 +143,7 @@ public class MainController {
             Integer currentUserId = user.getId();
             Iterable<Posts> posts = postsRepo.findAllByAuthor(currentUserId);
             model.addAttribute("posts", posts);
+            model.addAttribute("curUsrId",currentUserId);
             return "myPosts";
         }
         else {

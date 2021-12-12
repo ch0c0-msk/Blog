@@ -70,6 +70,7 @@ public class UserController {
 
         Optional<Users> user = usersRepo.findById(id);
         Integer currId = ((Users) userDetailsService.loadUserByUsername(principal.getName())).getId();
+        model.addAttribute("curUsrId",currId);
 
         if ( (user.get()).getId() == currId) {
 
@@ -83,8 +84,7 @@ public class UserController {
     }
 
     @PostMapping("/profile/{id}/edit")
-    public String updateProfile(@PathVariable(value = "id") Integer id, @RequestParam String firstName,
-                                @RequestParam String lastName, @RequestParam String grup, @RequestParam Integer age,
+    public String updateProfile(@PathVariable(value = "id") Integer id, @RequestParam String grup, @RequestParam Integer age,
                                 @RequestParam String city, @RequestParam String about, Model model, Principal principal) {
 
         Users user = usersRepo.findById(id).orElseThrow();
@@ -92,8 +92,6 @@ public class UserController {
 
         if (user.getId() == currId) {
 
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
             user.setGrup(grup);
             user.setAge(age);
             user.setCity(city);

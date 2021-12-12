@@ -20,7 +20,7 @@
                 <li class="nav-item"><a class="nav-link" href="/main">Все статьи</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Мои статьи</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Добавить</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Мой профиль</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="'/profile/' + ${curUsrId}">Мой профиль</a></li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
                         <button type="submit" class="btn btn-outline-primary"><a>Выйти</a></button>
@@ -46,7 +46,7 @@
                         <label for="exampleFormControlTextarea1" class="form-label">Текст статьи</label>
                         <textarea type="text" name="postText" class="form-control border border-dark" id="exampleFormControlTextarea1" rows="15" th:text="${el.postText}" />
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-success">Редактировать</button>
                     </div>
                 </form>

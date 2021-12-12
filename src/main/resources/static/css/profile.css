@@ -1,14 +1,20 @@
 #profile {
 
     margin-top: 100px;
-    margin-bottom: 13.2%;
+    margin-bottom: 16.5%;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .about {
 
     margin-top: 20px;
 }
-
 
 .bg-black {
     background: lightgray;

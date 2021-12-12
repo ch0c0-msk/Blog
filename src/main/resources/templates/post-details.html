@@ -20,7 +20,7 @@
                 <li class="nav-item"><a class="nav-link" href="/main">Все статьи</a></li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" href="/my-posts">Мои статьи</a></li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" href="/add">Добавить</a></li>
-                <li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" href="#">Мой профиль</a></li>
+                <li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" th:href="'/profile/' + ${curUsrId}">Мой профиль</a></li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
                     <form action="/logout" method="post">
                         <button type="submit" class="btn btn-outline-primary"><a>Выйти</a></button>
@@ -41,18 +41,20 @@
         <div class="col-10">
             <div class="container-fluid" th:each="el : ${post}">
                 <p><h4 th:text="${el.label}"/></p>
-                <p th:text="${el.author}"></p>
+                <p><a class="font-italic link-secondary" th:text="${el.author}" th:href="'/profile/' + ${el.authorId}"></a></p>
                 <p th:text="${el.postText}"/>
                 <div class="mt-4">
-                    <div class="row">
-                        <div class="col-2" th:if="${authorId == currId}">
+                    <div class="row text-center">
+                        <div class="col-4"></div>
+                        <div class="col-2 text-center" th:if="${authorId == currId}">
                             <a th:href="'/main/'+ ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
                         </div>
-                        <div class="col-2" th:if="${authorId == currId}">
+                        <div class="col-2 text-center" th:if="${authorId == currId}">
                             <form th:action="'/main/' + ${el.id} + '/remove'" method="post">
                                 <button class="btn btn-danger" type="submit">Удалить</button>
                             </form>
                         </div>
+                        <div class="col-4"></div>
                     </div>
                 </div>
             </div>

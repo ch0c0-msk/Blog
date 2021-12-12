@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
@@ -18,12 +18,17 @@
         <div class="container-fluid justify-content-end">
             <ul class="nav nav-fill">
                 <li class="nav-item"><a class="nav-link" href="/main">Все статьи</a></li>
-                <li class="nav-item"><a class="nav-link" href="/my-posts">Мои статьи</a></li>
-                <li class="nav-item"><a class="nav-link" href="/add">Добавить</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Мой профиль</a></li>
-                <li class="nav-item">
+                <li class="nav-item"><a class="nav-link" href="/my-posts" sec:authorize="isAuthenticated()">Мои статьи</a></li>
+                <li class="nav-item"><a class="nav-link" href="/add" sec:authorize="isAuthenticated()">Добавить</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" sec:authorize="isAuthenticated()">Мой профиль</a></li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <form action="/logout" method="post">
                         <button type="submit" class="btn btn-outline-primary"><a>Выйти</a></button>
+                    </form>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <form action="/login">
+                        <button type="submit" class="btn btn-outline-primary"><a>Войти</a></button>
                     </form>
                 </li>
             </ul>
@@ -58,7 +63,7 @@
                             </div>
                         </div>
 
-                        <div class="mt-4 d-flex justify-content-end" th:if="${user.id == curUserId}">
+                        <div class="mt-4 d-flex justify-content-center" th:if="${user.id == curUserId}">
                             <div class="row">
                                 <div class="col-2">
                                     <a th:href="'/profile/'+ ${user.id} + '/edit'" class="btn btn-warning">Редактировать</a>
