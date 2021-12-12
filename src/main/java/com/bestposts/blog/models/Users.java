@@ -26,6 +26,54 @@ public class Users implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @Column
+    private String grup;
+
+    @Column
+    private Integer age;
+
+    @Column
+    private String city;
+
+    @Column
+    private String about;
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getGrup() {
+        return grup;
+    }
+
+    public void setGrup(String grup) {
+        this.grup = grup;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public Integer getId() {
         return id;
     }
